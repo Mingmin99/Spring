@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Car {
 
-	@Qualifier("h")
+	@Qualifier("h1")
 	@Autowired
 	private Tire tire;
 

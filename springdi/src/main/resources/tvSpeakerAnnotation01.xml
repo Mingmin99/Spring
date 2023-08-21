@@ -9,5 +9,5 @@
 
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan
-		base-package="di.tvSpeaker"></context:component-scan>
+		base-package="di.tvSpeakeAnnotation04"></context:component-scan>
 </beans>

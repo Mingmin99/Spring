@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Config {
 
-	private SqlSession sqlsession;
+	private SqlSession sqlSession;
 
 	public Config() {
 		try {
@@ -19,6 +19,9 @@ public class Config {
 
 			inputStream = Resources.getResourceAsStream(resource);
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			sqlSession = sqlSessionFactory.openSession();
+
+			System.out.println(sqlSession);
 		} catch (
 
 		IOException e) {
@@ -28,4 +31,7 @@ public class Config {
 
 	}
 
+	public SqlSession getSqlSession() {
+		return sqlSession;
+	}
 }
