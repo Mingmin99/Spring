@@ -87,5 +87,54 @@
 
 		<!-- select * from t_board where writer -->
 	</select>
+
+	<!-- <select id="selectDSQLif1" parameterType="String" resultType="boardVO"> 
+		select * from t_board <if test="title != null"> where title=#{title} </if> 
+		</select> <select id="selectDSQLif2" parameterType="boardVO" resultType="boardVO"> 
+		select * from t_board <if test="title != null"> where title=#{title} </if> 
+		</select> -->
+
+	<select id="selectDSQLif3" resultType="boardVO">
+		select * from t_board
+		<if test="title != null">
+			where title=#{title}
+		</if>
+	</select>
+	<select id="selectDforeach1" resultType="boardVO">
+		select * from t_board
+		where no in ( 1,2,3,4,5,6)
+	</select>
+
+
+	<select id="selectDforeach2" parameterType="int[]"
+		resultType="boardVO">
+		select * from t_board
+		where no in
+		<foreach collection="array" item="abc" separator="," open="("
+			close=")">#{abc}
+		</foreach>
+	</select>
+	<select id="selectDforeach3" parameterType="boardVO"
+		resultType="boardVO">
+		select * from t_board
+		where no in
+		<foreach collection="numbers" item="abc" separator=","
+			open="(" close=")">#{abc}
+		</foreach>
+	</select>
+
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
 

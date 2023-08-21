@@ -9,6 +9,16 @@ public class BoardVO {
 	private String reg_date;
 	private int count;
 
+	public int[] getNumbers() {
+		return numbers;
+	}
+
+	public void setNumbers(int[] numbers) {
+		this.numbers = numbers;
+	}
+
+	private int[] numbers;
+
 	public int getNo() {
 		return no;
 	}

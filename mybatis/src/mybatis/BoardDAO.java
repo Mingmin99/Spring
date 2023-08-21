@@ -28,7 +28,9 @@ public class BoardDAO {
 //		selectbyNo2();
 //		deletebyWriter("강은현");
 //		updatebyWriter();
-		selectDSQL();
+//		selectDSQL();
+//		selectDynamicSQLif();
+		selectDforeach3();
 	}
 
 	public void insertNewPost() {
@@ -107,6 +109,54 @@ public class BoardDAO {
 		List<BoardVO> boardList = sqlSession.selectList("mybatis.BoardDAO.selectDSQL", inputBoardVO);
 		for (BoardVO resultBoardVO : boardList) {
 			System.out.println(resultBoardVO);
+		}
+	}
+
+	public void selectDynamicSQLif() {
+		List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif3", "제목입니다.");
+
+		for (BoardVO boardVO : boardlist) {
+			System.out.println(boardVO);
+		}
+	}
+
+	public void selectDynamicSQLif2() {
+		BoardVO boardVO = new BoardVO();
+		boardVO.setTitle("제목입니다.");
+
+		List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDSQLif3", boardVO);
+
+		for (BoardVO board : boardlist) {
+			System.out.println(board);
+		}
+	}
+
+	public void selectDforeach1() {
+		int[] a1 = { 1, 2, 3, 4, 5, 6 };
+
+		List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDforeach1");
+		for (BoardVO board : boardlist) {
+			System.out.println(board);
+		}
+	}
+
+	public void selectDforeach2() {
+		int[] a1 = { 1, 2, 3, 4, 5, 6 };
+
+		List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDforeach2", a1);
+		for (BoardVO board : boardlist) {
+			System.out.println(board);
+		}
+	}
+
+	public void selectDforeach3() {
+		BoardVO b1 = new BoardVO();
+		int[] al = { 1, 2, 3, 4, 5, 6, 7 };
+		b1.setNumbers(al);
+
+		List<BoardVO> boardlist = sqlSession.selectList("mybatis.BoardDAO.selectDforeach3", b1);
+		for (BoardVO board : boardlist) {
+			System.out.println(board);
 		}
 	}
 }
