@@ -42,6 +42,16 @@
 		select * from t_board
 		where writer = #{writer}
 	</select>
+
+
+	<!-- like -->
+	<select id="selectbyName2" parameterType="String"
+		resultMap="boardMap">
+		select * from t_board
+		where writer like '$%{writer}%'
+	</select>
+
+
 	<select id="selectbyNo" parameterType="Integer"
 		resultType="boardVO">
 		select * from t_board
@@ -122,6 +132,7 @@
 			open="(" close=")">#{abc}
 		</foreach>
 	</select>
+
 
 
 </mapper>
